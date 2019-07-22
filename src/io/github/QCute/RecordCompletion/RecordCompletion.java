@@ -9,28 +9,32 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 
-public class CodeCompletion extends AnAction {
+public class RecordCompletion extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent event) {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         Editor editor = event.getData(PlatformDataKeys.EDITOR);
-        // whole text document
-        Document document = editor.getDocument();
-        // line start
-        int startOffset = editor.getCaretModel().getVisualLineStart();
-        // current cursor
-        int currentOffset = editor.getCaretModel().getOffset();
-        // cut line text
-        String line = document.getText(new TextRange(startOffset, currentOffset));
-        // convert field to variable
-        final String insert = parse(line);
-        if (!insert.equals("")) {
-            // insert code
-            WriteCommandAction.runWriteCommandAction(project, () -> document.insertString(currentOffset, insert));
+        try {
+            // whole text document
+            Document document = editor.getDocument();
+            // line start
+            int startOffset = editor.getCaretModel().getVisualLineStart();
+            // current cursor
+            int currentOffset = editor.getCaretModel().getOffset();
+            // cut line text
+            String line = document.getText(new TextRange(startOffset, currentOffset));
+            // convert field to variable
+            final String insert = parse(line);
+            if (!insert.equals("")) {
+                // insert code
+                WriteCommandAction.runWriteCommandAction(project, () -> document.insertString(currentOffset, insert));
+            }
+            // move cursor
+            editor.getCaretModel().moveToOffset(currentOffset + insert.length());
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
-        // move cursor
-        editor.getCaretModel().moveToOffset(currentOffset + insert.length());
     }
 
     private static String parse(String text) {

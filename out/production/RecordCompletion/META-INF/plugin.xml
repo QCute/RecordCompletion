@@ -36,7 +36,7 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action id="io.github.QCute.CodeCase.CodeCompletion" class="io.github.QCute.RecordCompletion.CodeCompletion"
+    <action id="io.github.QCute.CodeCase.CodeCompletion" class="io.github.QCute.RecordCompletion.RecordCompletion"
             text="Complete Record Field"
             description="Complete Record Field">
       <add-to-group group-id="EditSmartGroup" anchor="after" relative-to-action="FillParagraph"/>
