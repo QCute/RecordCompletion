@@ -1,0 +1,50 @@
+<idea-plugin url="http://github.com/QCute/RecordCompletion">
+  <id>io.github.QCute.RecordCompletion</id>
+  <name>Complete Record Field</name>
+  <version>1.0.0</version>
+  <vendor email="baldoor@qq.com" url="http://github.com/QCute/RecordCompletion">QCute</vendor>
+
+  <description><![CDATA[
+      Complete record field code, See Edit menu or use Shift + Alt + P.
+      ]]></description>
+
+  <change-notes><![CDATA[
+      <p>If you have any comments please let me know.</p>
+
+      <p>Release 1.0.0:
+      </p>
+
+      ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  -->
+  <depends>com.intellij.modules.lang</depends>
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="io.github.QCute.CodeCase.CodeCompletion" class="io.github.QCute.RecordCompletion.CodeCompletion"
+            text="Complete Record Field"
+            description="Complete Record Field">
+      <add-to-group group-id="EditSmartGroup" anchor="after" relative-to-action="FillParagraph"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="shift alt P"/>
+    </action>
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+</idea-plugin>
