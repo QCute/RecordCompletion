@@ -4,7 +4,7 @@ Record Completion for IntelliJ IDEs (e.g. IntelliJ IDEA, ...)
 Complete record field code, See Edit menu or use Shift + Alt + P.  
 
 ## Install
-Use your IDE. Settings/Plugins/Marketplace search for "Complete Record Field".  
+Use your IDE. Settings/Plugins/Marketplace search for "RecordCompletion".
 
 ## Build
 clone repo ``` git clone http://github.com/QCute/RecordCompletion ```  
