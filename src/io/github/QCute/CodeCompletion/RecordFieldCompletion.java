@@ -1,4 +1,4 @@
-package io.github.QCute.RecordCompletion;
+package io.github.QCute.CodeCompletion;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -9,7 +9,7 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 
-public class RecordCompletion extends AnAction {
+public class RecordFieldCompletion extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent event) {
