@@ -1,12 +1,13 @@
 <idea-plugin url="http://github.com/QCute/RecordCompletion">
   <id>io.github.QCute.RecordCompletion</id>
   <name>RecordCompletion</name>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <vendor email="759276607@qq.com" url="http://github.com/QCute/RecordCompletion">QCute</vendor>
 
   <description><![CDATA[
       <p>Complete record field code, See Edit menu or use Shift + Alt + P.</p>
       <p>Complete record names code, See Edit menu or use Shift + Alt + O.</p>
+      <p>Complete record names code, See Edit menu or use Shift + Alt + K.</p>
       ]]></description>
 
   <change-notes><![CDATA[
@@ -43,6 +44,10 @@
     <action id="io.github.QCute.CodeCase.CodeCompletion.RecordNameCompletion" class="io.github.QCute.CodeCompletion.RecordNameCompletion" text="Complete Record Name" description="Complete record name">
       <add-to-group group-id="EditSmartGroup" anchor="after" relative-to-action="FillParagraph"/>
       <keyboard-shortcut keymap="$default" first-keystroke="shift alt O"/>
+    </action>
+    <action id="io.github.QCute.CodeCase.CodeCompletion.RecordBindCompletion" class="io.github.QCute.CodeCompletion.RecordBindCompletion" text="Complete Record Bind" description="Complete record bind">
+      <add-to-group group-id="EditSmartGroup" anchor="after" relative-to-action="FillParagraph"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="shift alt K"/>
     </action>
   </actions>
 

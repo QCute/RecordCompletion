@@ -9,9 +9,11 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.util.TextRange;
-import java.util.regex.*;
 
-public class RecordNameCompletion extends AnAction {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RecordBindCompletion extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent event) {
@@ -43,18 +45,18 @@ public class RecordNameCompletion extends AnAction {
 
     private static Pair<Integer, String> getRecordName(String text, int currentOffset) {
         // match #record{...
-        Matcher recordMatcher = Pattern.compile("#\\w+\\{").matcher(text);
+        Matcher recordMatcher = Pattern.compile("(\\w+)?#\\w+\\{").matcher(text);
         while(recordMatcher.find()) {
             // current pointer in record name
             if ((recordMatcher.start() <= currentOffset) && (currentOffset <= recordMatcher.end())) {
-                // extract record name
                 String group = recordMatcher.group();
+                // extract record name
                 String snakeName = group.substring(group.indexOf("#") + 1, group.indexOf("{"));
                 String pascalName = snakeCaseToPascalCase(snakeName);
                 // check duplicate
-                Matcher nameMatcher = Pattern.compile(pascalName + "#" + snakeName + "\\{").matcher(text);
+                Matcher nameMatcher = Pattern.compile(pascalName + "\\s*=\\s*(\\w+)?#" + snakeName + "\\{").matcher(text);
                 if (!nameMatcher.find()) {
-                    return new Pair<>(recordMatcher.start(), pascalName);
+                    return new Pair<>(recordMatcher.start(), pascalName + " = ");
                 } else {
                     return new Pair<>(-1, "");
                 }
